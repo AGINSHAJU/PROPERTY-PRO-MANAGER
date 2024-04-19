@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}
+PropertyPro - Cars
+{% endblock %}
+  <!-- ***** Header Area End ***** -->
+{% block body %}
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb"><a href="#">Car</a> / Rooms</span>
+          <h3>Cars</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section properties">
+    <div class="container">
+      <form action="{% url 'pricefilter' %}" method="post">
+        {% csrf_token %}
+      <ul class="properties-filter">
+        <div class="row">
+          <input type="hidden" id="item" name="item" value="car">
+          <select class="priceFilter form-select" name="priceFilter" required="required" style="width: auto;">
+            <option value="" disabled selected>Select Filter Option</option>
+            <option value="Low to High">Low to High</option>
+            <option value="High to Low">High to Low</option>
+          </select>
+          <button style="width: auto;margin-left: 10px;" class="btn btn-outline-dark">Filter</button>
+        </div>
+        
+      </ul>
+    </form>
+    <form action="{% url 'filterbycarname' %}" method="POST">
+      {% csrf_token %}
+      <ul class="properties-filter">
+        <div class="row">
+      <select class="form-select" name="location" required="required" style="width: auto;">
+        <option value="" disabled selected> Filter By car name</option>
+        <option value="Brezza">Brezza</option>
+        <option value="scorpio">Scorpio</option>
+        <option value="Swift">Swift</option>
+      </select>
+      <button style="width: auto;margin-left: 10px;" class="btn btn-outline-dark" type="submit">Filter</button>
+    </div>
+        
+  </ul>
+    </form>
+      <div class="row properties-box">
+        
+        
+        {% for i in data %}
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 str" style="height: 350;width: 350;">
+            
+          <div class="item" style="height: 350;width: 350;">
+            <a href="cardetail/{{i.id}}"><img src="{{i.Photo}}" alt="" style="height: 300;width: 300;"></a>
+            <span class="category">{{i.Name}}</span>&nbsp<span class="category">{{i.Rate}}</span>
+            
+            <div class="main-button">
+              <a href="booking/{{i.id}}">Book Now</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="pagination">
+            <li><a href="#">1</a></li>
+            <li><a class="is_active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">>></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    alert('fffff');
+  $("select.priceFilter").change(function() {
+    var selectedFilter = $(".priceFilter option:selected").text();
+    alert(selectedFilter);
+    
+  });
+});
+</script> -->

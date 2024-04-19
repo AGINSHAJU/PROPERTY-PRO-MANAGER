@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+PropertyPro - History
+{% endblock %}
+
+{% block body %}
+{% if payt %}
+<section class="donate-section">
+    <div class="section-overlay"></div>
+    <div class="container" style="padding-top: 80px;">
+        <div class="row">
+            
+            <div class="col-lg-6 col-12 mx-auto">
+                <h3 class="mb-4">Your details</h3>
+                <h5 class="mb-3">Name : {{user.Name}}</h5>
+
+                {% if booked %}
+                hellooo
+                    <h5 class="mb-3">Booked Car : {{booked.RoomPlace}}</h5>
+                    <h5 class="mb-3">Amount : {{booked.Amount}}</h5>
+                        <h5 class="mb-3">Status : {{payt.status}}</h5>
+                        <h5 class="mb-3">{% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}</h5>
+                {% else %}
+                    <h5 class="mb-3"> 
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}
+                    </h5>
+                    
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if payti %}
+<section class="donate-section">
+    <div class="section-overlay"></div>
+    <div class="container" style="padding-top: 80px;">
+        <div class="row">
+            
+            <div class="col-lg-6 col-12 mx-auto">
+                <h3 class="mb-4">Your details</h3>
+                <h5 class="mb-3">Name : {{user.Name}}</h5>
+                {% if roombook %}
+                    <h5 class="mb-3">Booked room place: {{roombook.RoomPlace}}</h5>
+                    <h5 class="mb-3">Amount : {{roombook.Amount}}</h5>
+                        <h5 class="mb-3">Status : {{payti.status}}</h5>
+                        <h5 class="mb-3">{% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}</h5>
+                {% else %}
+                    <h5 class="mb-3"> 
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}
+                    </h5>
+                    
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
